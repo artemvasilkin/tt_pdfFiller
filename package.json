@@ -1,0 +1,26 @@
+{
+  "name": "pdffiller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-pug": "^4.0.1",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-svgmin": "^2.2.0",
+    "gulp-uglify": "^3.0.2",
+    "pug-bem": "^1.2.2"
+  },
+  "dependencies": {
+    "gulp-uglifycss": "^1.1.0",
+    "svg4everybody": "^2.1.9"
+  }
+}

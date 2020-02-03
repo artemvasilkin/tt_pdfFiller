@@ -1,0 +1,6 @@
+mixin account(name, email)
+  .account
+    if name
+      .__name= name
+    if email
+      a(href="mailto:" + email).__email= email

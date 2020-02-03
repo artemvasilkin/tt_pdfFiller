@@ -1,0 +1,43 @@
+.file-explorer {
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #dadada;
+  }
+
+  &__column {
+    display: flex;
+  }
+
+  &__content {
+    padding: 16px 20px;
+  }
+
+  &__button {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-width: 0;
+    border-radius: 4px;
+    padding: 0;
+    background-color: transparent;
+    font-size: 16px;
+    color: #414141;
+
+    &:hover {
+      color: #ff9000;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #d4d4d4;
+      color: #ff9000;
+    }
+  }
+}

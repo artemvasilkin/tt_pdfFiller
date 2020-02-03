@@ -1,0 +1,39 @@
+include ../icon/icon.pug
+include ../sr-only/sr-only.pug
+
+mixin tabs
+  .tabs
+    block
+
+mixin tablist()
+  ul.tabs__tablist.tablist(role="tablist")
+    block
+
+mixin tabitem(item, index)
+  li.tablist__item(role="presentation")
+    a.tablist__link(
+      class=item.active && "tablist__link--active"
+      href="#section" + index
+      id="tab" + index
+      role="tab"
+      aria-selected=item.active
+      aria-controls="section" + index
+    )
+      if item.active
+        if item.iconActive
+          +icon(item.iconActive)
+        else
+          +icon(item.icon)
+      else
+        +icon(item.icon)
+      if item.title
+        +sr-only(item.title)
+
+mixin tabpanel(panel, index)
+  section.tabs__tabpanel.tabpanel(
+    class=panel.active && "tabpanel--active"
+    role="tabpanel"
+    id="section" + index
+    aria-labelledby="tab" + index
+  )
+    block

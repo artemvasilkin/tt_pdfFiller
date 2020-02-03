@@ -1,0 +1,29 @@
+include ../icon/icon
+
+mixin file-list(fileList)
+  .file-list(role="table")
+    .__header(role="rowgroup")
+      .__row.--header(role="row")
+        .__column.--header.--file(role="columnheader")
+          button.__sort
+            .__sort-title
+              | Name
+            .__sort-icon
+              +icon("arrow-alt-down")
+        .__column.--header.--size(role="columnheader") Size
+        .__column.--header.--date(role="columnheader") Date
+    if fileList
+      .__content(role="rowgroup")
+        each file, index in fileList
+          .__row(role="row")
+            .__column.--file(role="cell")
+              .file
+                .__icon
+                  +icon(file.icon)
+                .__name
+                  .file-list__text= file.name
+            .__column.--size(role="cell")
+              .file-list__text= file.size
+            .__column.--date(role="cell")
+              time.file-list__text= file.date
+              button.__import(type="button") Import

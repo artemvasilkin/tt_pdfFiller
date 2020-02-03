@@ -1,0 +1,140 @@
+.breadcrumbs {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 2px;
+  min-width: 188px;
+  padding-top: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+
+  &__list {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 0 rgba(23, 23, 23, 0.2);
+    border: solid 1px #d4d4d4;
+    background-color: #ffffff;
+    list-style: none;
+  }
+
+  &__item {
+    font-size: 14px;
+    line-height: 1.14;
+    color: #414141;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 15px;
+    border-width: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      .breadcrumbs__icon {
+        color: #ff9000;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #d4d4d4;
+
+      .breadcrumbs__icon {
+        color: #ff9000;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+
+    + * {
+      margin-left: 8px;
+    }
+  }
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  max-height: 24px;
+
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 24px;
+    border-radius: 4px;
+    background-image: url('icons/sprite.svg#folder-select');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 28px;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #d4d4d4;
+    }
+
+    &:focus-within {
+      background-image: url('icons/sprite.svg#folder-deselect');
+
+      .breadcrumbs {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &.focus-within,
+    &:hover,
+    &:focus {
+      background-image: url('icons/sprite.svg#folder-deselect');
+
+      .breadcrumbs {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    + * {
+      margin-left: 10px;
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: #d4d4d4;
+
+    + * {
+      margin-left: 8px;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.71;
+    color: #414141;
+  }
+
+  + * {
+    margin-top: 16px;
+  }
+}

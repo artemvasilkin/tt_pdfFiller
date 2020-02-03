@@ -1,0 +1,20 @@
+include ../icon/icon
+
+mixin file-breadcrumbs(breadcrumbs)
+  if breadcrumbs.current
+    .current
+      if breadcrumbs.current.icon
+        .__icon(tabindex="0")
+          if breadcrumbs.list
+            .breadcrumbs
+              ul.__list
+                each item, index in breadcrumbs.list
+                  li.__item
+                    button.__button(type="button")
+                      .__icon
+                        +icon(item.icon)
+                      .__name= item.name
+      if breadcrumbs.current.name
+        .__arrow
+          +icon("chevron-forward-single")
+        .__name= breadcrumbs.current.name

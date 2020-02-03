@@ -1,0 +1,24 @@
+include ../icon/icon
+include ../account/account
+include ../search/search
+include ../file-breadcrumbs/file-breadcrumbs
+include ../file-list/file-list
+
+mixin file-explorer(owner, currentPath, list)
+  .file-explorer
+    .__header
+      if owner
+        .__column
+          +account(owner.name, owner.email)
+      if list
+        .__column
+          +search(list)
+          button.__button(type="button")
+            +icon("logout")
+            +sr-only("Logout")
+    if currentPath || list
+      .__content
+        if currentPath
+          +file-breadcrumbs(currentPath)
+        if list
+          +file-list(list)

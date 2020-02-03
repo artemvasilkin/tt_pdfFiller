@@ -1,0 +1,51 @@
+extends ../templates/document/document
+
+include ../components/modal/modal
+include ../components/tabs/tabs
+include ../components/file-explorer/file-explorer
+include ../components/file-list/file-list
+
+block body
+  -
+    tablist = [
+      {title: 'Upload document', icon: 'upload-document'},
+      {title: 'PDFfiller', icon: 'pdffiller', iconActive: 'pdffiller-colored', active: "true"},
+      {title: 'Sign Now', icon: 'sign-now'},
+      {title: 'Dropbox', icon: 'dropbox'},
+      {title: 'Google Drive', icon: 'google-drive'},
+      {title: 'OneDrive', icon: 'one-drive'},
+      {title: 'Box', icon: 'box'},
+      {title: 'Office 365', icon: 'office-365'},
+      {title: 'SharePoint', icon: 'sharepoint'},
+    ]
+  -
+    fileExplorer = {
+      owner: {
+        name: "Wade Wilson",
+        email: "wadewilson@domain.com"
+      },
+      breadcrumbs: {
+        current: {icon: "folder-select", name: "Company Documents"},
+        list: [
+          {icon: "folder", name: "Folder 2"},
+          {icon: "folder", name: "Folder 1"},
+          {icon: "home", name: "PDFfiller Main"}
+        ]
+      },
+      list: [
+        {icon: "folder", name: "Company Policy", size: "2MB", date: "Nov 07, 2017"},
+        {icon: "document-solid", name: "online w9 2017-2018 form", size: "2MB", date: "Nov 07, 2017"},
+        {icon: "document-solid", name: "ds 82 2017-2018 form", size: "2MB", date: "Nov 07, 2017"},
+        {icon: "document-solid", name: "online w9 2017-2018 form", size: "2MB", date: "Nov 07, 2017"},
+      ]
+    }
+
+  +modal("Import documents to your Flow")
+    +tabs
+      +tablist()
+        each item, index in tablist
+          +tabitem(item, index)
+      each item, index in tablist
+        +tabpanel(item, index)
+          if index == 1
+            +file-explorer(fileExplorer.owner, fileExplorer.breadcrumbs, fileExplorer.list)

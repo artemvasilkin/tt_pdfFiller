@@ -1,0 +1,10 @@
+mixin search(list)
+  form.search
+    if list
+      datalist#files
+        for file, index in list
+          option(value="" + file.name)
+    input.__input(type="search" list="files" placeholder="Search" aria-label="Search")
+    button.__submit(type="submit")
+      +icon("search")
+      +sr-only("Search")

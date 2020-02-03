@@ -1,0 +1,21 @@
+include ../icon/icon.pug
+include ../sr-only/sr-only.pug
+
+mixin modal(title)
+  .modal
+    .__backdrop
+    .__window
+      .__header
+        .__return-col
+          button.__return(type="button")
+            +icon("chevron-back-single")
+            +sr-only("Go back")
+        .__title-col
+          h2.__title= title
+        .__close-col
+          button.__close(type="button")
+            +icon("cross-lg")
+            +sr-only("Close")
+      if block
+        ._content
+          block

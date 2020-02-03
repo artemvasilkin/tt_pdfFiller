@@ -1,0 +1,46 @@
+@import "./libs/normalize.scss";
+
+body {
+  font-family: "Open Sans", sans-serif;
+  word-break: break-all;
+}
+
+@import "../components/modal/modal.scss";
+@import "../components/icon/icon.scss";
+@import "../components/sr-only/sr-only.scss";
+@import "../components/tabs/tabs.scss";
+@import "../components/account/account";
+@import "../components/search/search";
+@import "../components/file-explorer/file-explorer.scss";
+@import "../components/file-breadcrumbs/file-breadcrumbs.scss";
+@import "../components/file-list/file-list.scss";
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url("../fonts/open-sans-v17-latin-regular.woff2") format("woff2"),
+    url("../fonts/open-sans-v17-latin-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local("Open Sans SemiBold"), local("OpenSans-SemiBold"),
+    url("../fonts/open-sans-v17-latin-600.woff2") format("woff2"),
+    url("../fonts/open-sans-v17-latin-600.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Open Sans Bold"), local("OpenSans-Bold"),
+    url("../fonts/open-sans-v17-latin-700.woff2") format("woff2"),
+    url("../fonts/open-sans-v17-latin-700.woff") format("woff");
+}
