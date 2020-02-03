@@ -55,7 +55,7 @@ function scripts() {
     .pipe(browserSync.stream());
 }
 
-function fonts() {
+async function fonts() {
   return src("app/fonts/*").pipe(dest("dist/fonts"))
 }
 
