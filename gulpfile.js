@@ -9,6 +9,7 @@ const replace = require("gulp-replace");
 const sass = require("gulp-sass");
 const uglifycss = require('gulp-uglifycss');
 const uglify = require('gulp-uglify');
+const del = require('del');
 
 function markup() {
   return src("app/pages/*.pug")
@@ -58,8 +59,16 @@ function fonts() {
   return src("app/fonts/*").pipe(dest("dist/fonts"))
 }
 
-function start() {
-  series(markup, sprite, styles, scripts, fonts)();
+async function clean() {
+  return del.sync('dist');
+}
+
+async function build() {
+  return series(clean, markup, sprite, styles, scripts, fonts)();
+}
+
+async function start() {
+  await series(clean, markup, sprite, styles, scripts, fonts)();
 
   browserSync.init({
     server: {
@@ -80,5 +89,7 @@ exports.sprite = sprite;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.fonts = fonts;
+exports.clean = clean;
+exports.build = build;
 exports.start = start;
 exports.default = start;
