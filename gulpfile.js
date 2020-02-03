@@ -59,16 +59,20 @@ function fonts() {
   return src("app/fonts/*").pipe(dest("dist/fonts"))
 }
 
+function favicon() {
+  return src("app/icons/favicon.ico").pipe(dest("dist/icons"))
+}
+
 async function clean() {
   return del.sync('dist');
 }
 
 async function build() {
-  return series(clean, markup, sprite, styles, scripts, fonts)();
+  return series(clean, markup, sprite, styles, scripts, fonts, favicon)();
 }
 
 async function start() {
-  await series(clean, markup, sprite, styles, scripts, fonts)();
+  await series(clean, markup, sprite, styles, scripts, fonts, favicon)();
 
   browserSync.init({
     server: {
@@ -78,7 +82,7 @@ async function start() {
   });
 
   watch(["app/pages/*.pug", "app/templates/**/*.pug", "app/components/**/*.pug"], markup);
-  watch("app/icons/*.svg", sprite);
+  watch("app/icons/*", sprite, favicon);
   watch(["app/styles/*.scss", "app/templates/**/*.scss", "app/components/**/*.scss"], styles);
   watch("app/scripts/*.js", scripts);
   watch("app/fonts/*", fonts);
